@@ -2,6 +2,7 @@
 JavaScript+JQuery Interactive Pie Chart
 
 calcpie.js: Requires jQuery 1.8+, jQueryUI 1.7+, CSS "fill" colors for each pie slice (e.g. path.calc-pie:nth-child(1){fill: #4d4550;})
+Licensed under MIT license (feel free to use the code however you want, no warranty, please provie attribution).
 
 Draws a pie chart over the initialized tag. Accepts the following arguments:
 
