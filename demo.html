@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<head><title>Pie Chart jQuery Plugin Example Page by Scott Sutherland</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css" />
+<style type="text/css">
+body {
+	background: grey;
+	font-family: sans-serif;
+}
+.calc-pie {
+	stroke: white;
+	stroke-width: 2px;
+}
+.calc-pitext {
+	font-family: sans-serif; fill: #fff;
+	-webkit-touch-callout: none; 
+	-webkit-user-select: none;
+	font-size: 12px;
+	cursor: pointer;
+	text-anchor: middle;
+	dominant-baseline: middle;
+}
+.calc-pieHandle {
+	opacity: 0;
+	-webkit-touch-callout: none; 
+	-webkit-user-select: none;
+	cursor: pointer;
+}
+svg {
+	/*this section is to keep people from selecting text when clicking and dragging*/
+	-webkit-touch-callout: none; 
+	-webkit-user-select: none;
+}
+
+path.calc-pie:nth-child(1){
+	fill: #4d4550;
+}
+path.calc-pie:nth-child(2){
+	fill: #a1c1e7;
+}
+path.calc-pie:nth-child(3){
+	fill: #a28565;
+}
+path.calc-pie:nth-child(4){
+	fill: #a6ce3a;
+}
+path.calc-pie:nth-child(5){
+	fill: #ffd87b;
+}
+path.calc-pie:nth-child(6){
+	fill: #e7a1a1;
+}
+path.calc-pie:nth-child(7){
+	fill: #b6a1e7;
+}
+path.calc-pie:nth-child(8){
+	fill: #bde7a1;
+}
+
+
+</style>
+</head>
+<body>
+<h2>Warning: Work in progress</h2>
+<div>
+<p>1. (Optional) Select any options you wish
+<br />2. Click submit to build the pie chart</p>
+<form>
+<ul>Options:
+<li>Display Units: 
+	<input type="radio" name="defaultUnits" value="degrees" > Degrees</input> 
+	<input type="radio" name="defaultUnits" value="percent" > Percent</input>
+<li>Start positions** (comma-separated): <input type="text" name="start" />
+<li>SVG Width: <input type="text" name="width" />
+<li>SVG Height: <input type="text" name="height" />
+<li>Pie Diameter: <input type="text" name="diameter" />
+<li>Mouse Sensitivity: <input type="text" name="sensitivity" />
+<li>Label Position: 
+	<input type="radio" name="labelPosition" value="outer" />Outer
+	<input type="radio" name="labelPosition" value="inner" />Inner
+<li>*Labels: 
+	<input type="radio" name="showLabel" value="mouseover" > MouseOver</input>
+	<input type="radio" name="showLabel" value="static">Static</input>
+<li>*Interactive? 
+	<input type="radio" name="interactive" value="true" >Yes</input>
+	<input type="radio" name="interactive" value="false">No</input>
+<li><button>Submit</button>
+</ul>
+</form>
+<dl>
+<dd>*Not currently functional
+<dd>**The number of start positions determines the number of slices in the chart
+</ul>
+</div>
+<div id="pie">(Pie chart builds here)</div>
+<p>2. Click and drag the slices to change their values.</p>
+
+<script type="text/javascript" src="pie.js"></script>
+<script type="text/javascript">
+
+$('button').on('click',function(e){
+	e.preventDefault();
+	$('#pie').html('')
+	var a = {};
+	$(':input').each(function(i,v){
+		input = $(this)
+		if(input.is('[type="radio"]')){
+			if(input.is(':checked')) a[input.attr('name')] = input.val();
+		} else {
+			a[input.attr('name')] = (input.val() !== '') ? input.val() : undefined;
+		}
+	});
+	$(':input')
+	$('#pie').pie(a)
+})
+</script>
+</body>
