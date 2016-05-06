@@ -16,7 +16,7 @@ interactive: defines whether the chart can be manipulated with click & drag. Acc
 sensitivity: in interactive mode, how quickly the values change as the mouse is moved. Default: 1.5.
 legend: creates a div and adds a legend. (I don't believe this is fully supported yet.)
 
-* denotes default value
+astrisk denotes default value
 
 When set to interactive mode, the pie slices can be clicked on and dragged in the direction of the clockwise-rightmost side to increase/decrease the value.
 Values can be queried directly via $('#yourtag').calcpie('position'); this will return all pie slice selectors "calcpie-pN" where N is the slice number.
